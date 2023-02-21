@@ -4,7 +4,7 @@
 
 <br/>
 <h3>Required Libraries : </h3>
-  <h4 style="color:blue">
+  <h4 style="color:#006cff">
      <li>OpenCV  - pip install opencv-python</li>
      <li>Mediapipe - pip install mediapipe</li>
      <li>PyAutoGUI - pip install pyautogui </li>
