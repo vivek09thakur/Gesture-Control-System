@@ -36,7 +36,7 @@ be improved in ÿurther days.</p>
 
 
 <br/>
-<h3>Work Flow of Program :</h3> 
+<h3>Code Explanation ~ </h3> 
 
 <li>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</li>
 
