@@ -46,6 +46,7 @@ be improved in ÿurther days.</p>
 <br/>
 <h3>Code Explanation ~ </h3> 
 
+<Details>
 <li>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</li>
 
 <li>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</li>
@@ -62,3 +63,5 @@ be improved in ÿurther days.</p>
 <li>Step 7 : The program then extracts the landmark positions and maps the position of the index finger and thumb to the screen coordinates.</li>
 
 <br/><br/> Finally, the program checks the distance between the index finger and thumb, and performs a click or moves the cursor accordingly.
+
+</Details>
