@@ -35,9 +35,11 @@ be improved in further days.</p>
 <h3 align="center">Libraries and Modules Used ~ </h3>
 
 <p align="center">
-   <a href="#">
-     OpenCV-Python | Mediapipe | PyAutoGUI
-   </a>
+  ```sh
+     pip install opencv-python
+     pip install mediapipe
+     pip install pyautogui
+ ```
 </p>
 
 
