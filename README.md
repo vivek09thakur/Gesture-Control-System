@@ -1,5 +1,6 @@
 <h1 align="center">Science Week Project🔬🧪 </h1>
-<h3>Gesture Sense Interface - Control System </h3>
+
+<h3 align="center">Gesture Sense Interface - Control System </h3>
 
 <h3 align="center">Project Objectives ~ </h3>
 <p>In this project we have tried our best to create an 
