@@ -1,7 +1,15 @@
 <h1 align="center">Science Week Project🔬🧪 </h1>
 
 <h3 align="center">Gesture Sense Interface - Control System </h3>
-<p> 
+<p> As a basic computer setup have essential components such as monitor, CPU , keyboard and mouse. In morden days many PCs and Laptops comes with Touch Screen displays which is quite good.But For now let's go a step further , What about if we can control our display without 
+touching it? Seems awesome right?
+
+<br/>We have just tried to make a system that can finger out coordinate of our fingure or say it just 
+track position of our hand and then tracks the cursors location in the screen and matches it.
+
+<br/>Through this we can create a virtual mouse with we can control system gesture without any 
+physical contact. Let's know how it works and it's components.
+</p>
 
 
 
