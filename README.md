@@ -99,8 +99,12 @@ be improved in further days.</p>
 <p>Step 5 : The program then converts the BGR image to RGB and passes it to the MediaPipe Hands object for hand landmark detection.</p>
 
 
-```sh 
- yarn add ghost-cursor 
+```py
+     frame_height, frame_width, _ = frame.shape 
+     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB) 
+     output = hand_detector.process(rgb_frame) 
+     hands = output.multi_hand_landmarks
+
  ```
 
 
