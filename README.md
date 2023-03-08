@@ -79,7 +79,7 @@ be improved in further days.</p>
 <p>Step 3 : The program then gets the screen dimensions using PyAutoGUI.</p>
 
 ```sh 
-  screen_width, screen_height = pyautogui.size() 
+ screen_width, screen_height = pyautogui.size() 
  index_y = 0
 
 
