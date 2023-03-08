@@ -95,7 +95,22 @@ be improved in further days.</p>
 <p>Step 6 : If hands are detected, the program loops through each hand and draws the landmarks on the frame.
 </p>
 
+```sh 
+ yarn add ghost-cursor 
+ ```
+
+
 <p>Step 7 : The program then extracts the landmark positions and maps the position of the index finger and thumb to the screen coordinates.</p>
 
+```sh 
+ yarn add ghost-cursor 
+ ```
+
+
 <br/><br/> Finally, the program checks the distance between the index finger and thumb, and performs a click or moves the cursor accordingly.
+
+
+```sh 
+ yarn add ghost-cursor 
+ ```
 
