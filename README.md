@@ -24,7 +24,7 @@ be improved in ÿurther days.</p>
 
 
 
-<h3>Required Libraries : </h3>
+<h3 align="center">Libraries and Modules Used ~ </h3>
   <a href="#">
      <li>OpenCV  - pip install opencv-python</li>
      <li>Mediapipe - pip install mediapipe</li>
