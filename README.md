@@ -59,7 +59,7 @@ be improved in further days.</p>
 
 <p>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</p>
 
-```sh 
+```py
  import cv2 
  import mediapipe as mp 
  import pyautogui
@@ -68,7 +68,7 @@ be improved in further days.</p>
 
 <p>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</p>
 
-```sh 
+```py
  cap = cv2.VideoCapture(0) 
  hand_detector = mp.solutions.hands.Hands() 
  drawing_utils = mp.solutions.drawing_utils 
@@ -78,7 +78,7 @@ be improved in further days.</p>
 
 <p>Step 3 : The program then gets the screen dimensions using PyAutoGUI.</p>
 
-```sh 
+```py
  screen_width, screen_height = pyautogui.size() 
  index_y = 0
 
