@@ -1,6 +1,6 @@
 <h1 align="center">Science Week Project 🛸🔭</h1>
 
-<h3 align="center">
+<br/><h3 align="center">
   Gesture Sense Interface - Control System
 </h3>
 
