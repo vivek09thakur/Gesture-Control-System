@@ -20,7 +20,7 @@ physical contact. Let's know how it works and it's components.
 
 <h3 align="center">Project Objectives ~ </h3>
 <p>In this project we have tried our best to create an 
-interactive control system throuĀh which we can 
+interactive control system through which we can 
 replace the use oÿ mouse and touch screen. Still 
 currently this have many limitations but it’ll 
 be improved in ÿurther days.</p>
