@@ -1,6 +1,10 @@
 <h1 align="center">Science Week Project🔬🧪 </h1>
 
 <h3 align="center">Gesture Sense Interface - Control System </h3>
+<p> 
+
+
+
 
 <h3 align="center">Project Objectives ~ </h3>
 <p>In this project we have tried our best to create an 
@@ -9,6 +13,9 @@ replace the use oÿ mouse and touch screen. Still
 currently this have many limitations but it’ll 
 be improved in ÿurther days.</p>
 
+
+
+
 <h3>Required Libraries : </h3>
   <h4 style="color:#006cff">
      <li>OpenCV  - pip install opencv-python</li>
@@ -16,13 +23,17 @@ be improved in ÿurther days.</p>
      <li>PyAutoGUI - pip install pyautogui </li>
   </h4>
 
+
+
 <br/>
 <h3>How it works</h3>
 <p>
-   The code uses OpenCV, MediaPipe, and PyAutoGUI libraries to create a virtual mouse.
-   The program detects hand landmarks using MediaPipe Hands, and then maps the position of the index finger and thumb to the screen coordinates using PyAutoGUI.
-   The index finger is used as a cursor, while the thumb is used as a clicker.
+   The code uses OpenCV, MediaPipe, and PyAutoGUI libraries to create a virtual mouse. The program detects hand landmarks using MediaPipe Hands, and then maps the position of the index finger and thumb to the screen coordinates using PyAutoGUI.The index finger is used as a cursor, while the thumb is used as a clicker.
 </p>
+
+
+
+
 
 <br/>
 <h3>Work Flow of Program :</h3> 
