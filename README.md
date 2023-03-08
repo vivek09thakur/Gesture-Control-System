@@ -132,10 +132,26 @@ be improved in further days.</p>
  ```
 
 
-<br/><br/> Finally, the program checks the distance between the index finger and thumb, and performs a click or moves the cursor accordingly.
+<br/> Finally, the program checks the distance between the index finger and thumb, and performs a click or moves the cursor accordingly.
 
 
-```sh 
- yarn add ghost-cursor 
+```py
+                if id == 8: 
+                     cv2.circle(img=frame, center=(x,y), radius=10, color=(0, 255, 255)) 
+                     index_x = screen_width/frame_width*x 
+                     index_y = screen_height/frame_height*y 
+  
+                 if id == 4: 
+                     cv2.circle(img=frame, center=(x,y), radius=10, color=(0, 255, 255)) 
+                     thumb_x = screen_width/frame_width*x 
+                     thumb_y = screen_height/frame_height*y 
+                     print('outside', abs(index_y - thumb_y)) 
+                     if abs(index_y - thumb_y) < 20: 
+                         pyautogui.click() 
+                         pyautogui.sleep(1) 
+                     elif abs(index_y - thumb_y) < 100: 
+                         pyautogui.moveTo(index_x, index_y) 
+     cv2.imshow('Virtual Mouse', frame) 
+     cv2.waitKey(1)
  ```
 
