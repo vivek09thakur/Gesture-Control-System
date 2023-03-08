@@ -1,8 +1,7 @@
-<h1 align="center">Science Week Project🔬🧪 </h1>
-<img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*Qbemyibg7dYQKZA3pOTL4w.jpeg">
+<h1 align="center">Science Week Project 🛸🔭</h1>
 
 <h3 align="center">
-  <a href="#">Gesture Sense Interface - Control System</a>
+  Gesture Sense Interface - Control System
 </h3>
 
 <p> As a basic computer setup have essential components such as monitor, CPU , keyboard and mouse. In morden days many PCs and Laptops comes with Touch Screen displays which is quite good.But For now let's go a step further , What about if we can control our display without 
