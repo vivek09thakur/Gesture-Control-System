@@ -39,7 +39,9 @@ be improved in ÿurther days.</p>
 
 
 
-<br/>
+
+
+<br/><br/>
 <h3>How it works?</h3>
 <p>
    The code uses OpenCV, MediaPipe, and PyAutoGUI libraries to create a virtual mouse. The program detects hand landmarks using MediaPipe Hands, and then maps the position of the index finger and thumb to the screen coordinates using PyAutoGUI.The index finger is used as a cursor, while the thumb is used as a clicker.
@@ -49,7 +51,7 @@ be improved in ÿurther days.</p>
 
 
 
-<br/>
+<br/><br/>
 <h3>Code Explanation ~ </h3> 
 
 <li>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</li>
