@@ -1,4 +1,4 @@
-<h1>Science Week Project🔬🧪 </h1>
+<h1 align="center">Science Week Project🔬🧪 </h1>
 <h3>Gesture Sense Interface - Control System </h3>
 
 <h3 align="center">Project Objectives ~ </h3>
