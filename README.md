@@ -47,6 +47,7 @@ be improved in ÿurther days.</p>
 <h3>Code Explanation ~ </h3> 
 
 <Details>
+    <summary>Expand to know how the code works</summary>
 <li>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</li>
 
 <li>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</li>
