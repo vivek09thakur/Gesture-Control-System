@@ -116,16 +116,19 @@ be improved in further days.</p>
          for hand in hands: 
              drawing_utils.draw_landmarks(frame, hand) 
              landmarks = hand.landmark 
-             for id, landmark in enumerate(landmarks): 
-                 x = int(landmark.x*frame_width) 
-                 y = int(landmark.y*frame_height)
  ```
 
 
 <p>Step 7 : The program then extracts the landmark positions and maps the position of the index finger and thumb to the screen coordinates.</p>
 
 ```sh 
- yarn add ghost-cursor 
+              for id, landmark in enumerate(landmarks): 
+                 x = int(landmark.x*frame_width) 
+                 y = int(landmark.y*frame_height) 
+                 if id == 8: 
+                     cv2.circle(img=frame, center=(x,y), radius=10, color=(0, 255, 255)) 
+                     index_x = screen_width/frame_width*x 
+                     index_y = screen_height/frame_height*y
  ```
 
 
