@@ -88,8 +88,11 @@ be improved in further days.</p>
 
 <p>Step 4 : In the main loop, the program reads the video stream from the camera and flips it horizontally.</p>
 
-```sh 
- yarn add ghost-cursor 
+```py
+ while True: 
+     _, frame = cap.read() 
+     frame = cv2.flip(frame, 1)
+
  ```
 
 
