@@ -60,7 +60,10 @@ be improved in further days.</p>
 <p>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</p>
 
 ```sh 
- yarn add ghost-cursor 
+ import cv2 
+ import mediapipe as mp 
+ import pyautogui
+
  ```
 
 <p>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</p>
