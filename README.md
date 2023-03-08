@@ -69,14 +69,20 @@ be improved in further days.</p>
 <p>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</p>
 
 ```sh 
- yarn add ghost-cursor 
+ cap = cv2.VideoCapture(0) 
+ hand_detector = mp.solutions.hands.Hands() 
+ drawing_utils = mp.solutions.drawing_utils 
+
  ```
 
 
 <p>Step 3 : The program then gets the screen dimensions using PyAutoGUI.</p>
 
 ```sh 
- yarn add ghost-cursor 
+  screen_width, screen_height = pyautogui.size() 
+ index_y = 0
+
+
  ```
 
 
