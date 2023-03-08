@@ -46,8 +46,6 @@ be improved in ÿurther days.</p>
 <br/>
 <h3>Code Explanation ~ </h3> 
 
-<Details> <summary style="font-size:25px">
-Click to expand</summary>
 <li>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</li>
 
 <li>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</li>
@@ -65,4 +63,3 @@ Click to expand</summary>
 
 <br/><br/> Finally, the program checks the distance between the index finger and thumb, and performs a click or moves the cursor accordingly.
 
-</Details>
