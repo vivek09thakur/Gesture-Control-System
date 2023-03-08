@@ -54,20 +54,20 @@ be improved in ÿurther days.</p>
 <br/><br/>
 <h3>Code Explanation ~ </h3> 
 
-<li>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</li>
+<p>Step 1 : The program first imports the required libraries: cv2 (OpenCV), mediapipe, and pyautogui.</p>
 
-<li>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</li>
+<p>Step 2 : It then sets up the camera capture and initializes the MediaPipe Hands object and drawing utilities.</p>
 
-<li>Step 3 : The program then gets the screen dimensions using PyAutoGUI.</li>
+<p>Step 3 : The program then gets the screen dimensions using PyAutoGUI.</p>
 
-<li>Step 4 : In the main loop, the program reads the video stream from the camera and flips it horizontally.</li>
+<p>Step 4 : In the main loop, the program reads the video stream from the camera and flips it horizontally.</p>
 
-<li>Step 5 : The program then converts the BGR image to RGB and passes it to the MediaPipe Hands object for hand landmark detection.</li>
+<p>Step 5 : The program then converts the BGR image to RGB and passes it to the MediaPipe Hands object for hand landmark detection.</p>
 
-<li>Step 6 : If hands are detected, the program loops through each hand and draws the landmarks on the frame.
-</li>
+<p>Step 6 : If hands are detected, the program loops through each hand and draws the landmarks on the frame.
+</p>
 
-<li>Step 7 : The program then extracts the landmark positions and maps the position of the index finger and thumb to the screen coordinates.</li>
+<p>Step 7 : The program then extracts the landmark positions and maps the position of the index finger and thumb to the screen coordinates.</p>
 
 <br/><br/> Finally, the program checks the distance between the index finger and thumb, and performs a click or moves the cursor accordingly.
 
