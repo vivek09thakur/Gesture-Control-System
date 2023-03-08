@@ -1,4 +1,5 @@
 <h1 align="center">Science Week Project🔬🧪 </h1>
+<img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*Qbemyibg7dYQKZA3pOTL4w.jpeg">
 
 <h3 align="center">
   <a href="#">Gesture Sense Interface - Control System</a>
