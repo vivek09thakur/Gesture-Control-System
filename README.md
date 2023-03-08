@@ -25,9 +25,12 @@ be improved in ÿurther days.</p>
 
 
 <h3 align="center">Libraries and Modules Used ~ </h3>
-  <a href="#" align="center">
+
+<p align="center">
+   <a href="#">
      OpenCV-Python | Mediapipe | PyAutoGUI
-  </a>
+   </a>
+</p>
 
 
 
