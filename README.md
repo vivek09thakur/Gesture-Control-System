@@ -1,6 +1,12 @@
 <h1>Science Week Project🔬🧪 </h1>
 <h3>Gesture Sense Interface - Control System </h3>
 
+<h3 align="center">Project Objectives ~ </h3>
+<p>In this project we have tried our best to create an 
+interactive control system throuĀh which we can 
+replace the use oÿ mouse and touch screen. Still 
+currently this have many limitations but it’ll 
+be improved in ÿurther days.</p>
 
 <h3>Required Libraries : </h3>
   <h4 style="color:#006cff">
