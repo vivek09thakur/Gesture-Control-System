@@ -23,7 +23,7 @@ physical contact. Let's know how it works and it's components.
 interactive control system through which we can 
 replace the use of mouse and touch screen. Still 
 currently this have many limitations but it’ll 
-be improved in ÿurther days.</p>
+be improved in further days.</p>
 
 
 
