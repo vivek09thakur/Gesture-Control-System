@@ -22,7 +22,7 @@ physical contact. Let's know how it works and it's components.
 <br/><br/>
 
 
-<h3 align="center">Project Objectives ~ </h3>
+<h3>Project Objectives : </h3>
 <p>In this project we have tried our best to create an 
 interactive control system through which we can 
 replace the use of mouse and touch screen. Still 
@@ -155,4 +155,6 @@ be improved in further days.</p>
      cv2.imshow('Virtual Mouse', frame) 
      cv2.waitKey(1)
  ```
+
+
 
