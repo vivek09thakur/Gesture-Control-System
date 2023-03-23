@@ -33,7 +33,7 @@ be improved in further days.</p>
 
 <br/><br/>
 
-<h3 align="center">Libraries and Modules Used ~ </h3>
+<h3 align="center">Libraries Used </h3>
 
   ```sh
      pip install opencv-python
