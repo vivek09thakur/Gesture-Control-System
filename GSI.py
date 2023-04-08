@@ -15,7 +15,7 @@ screen_width, screen_height = pyautogui.size()
 prev_index_x, prev_index_y = None, None
 
 # 60Fps
-target_fps = 70
+target_fps = 60
 #  delay to  FPS
 delay = int(1000 / target_fps)
 cap = cv2.VideoCapture(0)
