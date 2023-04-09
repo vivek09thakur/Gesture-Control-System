@@ -8,7 +8,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
     min_detection_confidence=0.3,  # lower detection confidence threshold
-    min_tracking_confidence=0.9,
+    min_tracking_confidence=0.5,
     max_num_hands=1
 )
 
