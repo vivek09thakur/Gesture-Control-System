@@ -66,7 +66,7 @@ while True:
                 prev_index_x, prev_index_y = new_x, new_y
 
     # Display frame
-    cv2.imshow('Virtual Mouse', frame)
+    cv2.imshow('Gesture Sense Interface Control System', frame)
 
     # Exit on 'q' key press
     if cv2.waitKey(delay) & 0xFF == ord('q'):
