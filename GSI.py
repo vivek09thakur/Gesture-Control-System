@@ -3,7 +3,7 @@ import mediapipe as mp
 import pyautogui
 import math
 
-# Adjustment for hands
+# Adjustment for hand detection
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
