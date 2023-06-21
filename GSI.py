@@ -8,8 +8,7 @@ class HandDetector:
     def __init__(self, 
                  max_hands=1, 
                  detection_confidence=0.3, 
-                 tracking_confidence=0.5
-                 ):
+                 tracking_confidence=0.5):
         
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(
@@ -17,12 +16,11 @@ class HandDetector:
             min_detection_confidence=detection_confidence,
             min_tracking_confidence=tracking_confidence
         )
-
         self.screen_width, self.screen_height = pyautogui.size()
         self.prev_index_x, self.prev_index_y = None, None
 
     def detect(self, frame):
-        
+
         frame = cv2.flip(frame, 1)
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = self.hands.process(image)
@@ -49,16 +47,32 @@ class HandDetector:
                     pyautogui.moveTo(new_x, new_y)
                     self.prev_index_x, self.prev_index_y = new_x, new_y
 
+            self.draw_lines(frame, hand_landmarks)
+
         return frame
 
-class GestureInterfaceController:
-
-    def __init__(self, 
-                 webcam_id=0, 
-                 frame_width=640, 
-                 frame_height=480, 
-                 target_fps=30):
+    def draw_lines(self, 
+                   frame, 
+                   hand_landmarks):
         
+        image_height, image_width, _ = frame.shape
+        color = (0, 0, 255)  
+
+        for i in range(len(hand_landmarks.landmark) - 1):
+            start = (
+                int(hand_landmarks.landmark[i].x * image_width),
+                int(hand_landmarks.landmark[i].y * image_height)
+            )
+            end = (
+                int(hand_landmarks.landmark[i+1].x * image_width),
+                int(hand_landmarks.landmark[i+1].y * image_height)
+            )
+
+            cv2.line(frame, start, end, color, thickness=3)
+
+
+class GestureInterfaceController:
+    def __init__(self, webcam_id=0, frame_width=640, frame_height=480, target_fps=30):
         self.webcam_id = webcam_id
         self.frame_width = frame_width
         self.frame_height = frame_height
@@ -100,6 +114,5 @@ class GestureInterfaceController:
         cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    
     controller = GestureInterfaceController()
     controller.run()
