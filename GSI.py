@@ -113,6 +113,6 @@ class GestureInterfaceController:
             self.cap.release()
         cv2.destroyAllWindows()
 
-if __name__ == '__main__':
-    controller = GestureInterfaceController()
-    controller.run()
+# if __name__ == '__main__':
+#     controller = GestureInterfaceController()
+#     controller.run()
