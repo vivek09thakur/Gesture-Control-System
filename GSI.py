@@ -56,7 +56,7 @@ class HandDetector:
                    hand_landmarks):
         
         image_height, image_width, _ = frame.shape
-        color = (0, 0, 255)  
+        color = (41, 98, 255, 1) 
 
         for i in range(len(hand_landmarks.landmark) - 1):
             start = (
