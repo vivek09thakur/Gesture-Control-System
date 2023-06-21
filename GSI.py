@@ -3,76 +3,103 @@ import mediapipe as mp
 import pyautogui
 import math
 
-# Adjustment for hand detection
-mp_drawing = mp.solutions.drawing_utils
-mp_hands = mp.solutions.hands
-hands = mp_hands.Hands(
-    min_detection_confidence=0.3,  # lower detection confidence threshold
-    min_tracking_confidence=0.5,
-    max_num_hands=1
-)
+class HandDetector:
 
-screen_width, screen_height = pyautogui.size()
-prev_index_x, prev_index_y = None, None
+    def __init__(self, 
+                 max_hands=1, 
+                 detection_confidence=0.3, 
+                 tracking_confidence=0.5
+                 ):
+        
+        self.mp_hands = mp.solutions.hands
+        self.hands = self.mp_hands.Hands(
+            max_num_hands=max_hands,
+            min_detection_confidence=detection_confidence,
+            min_tracking_confidence=tracking_confidence
+        )
 
-# 60Fps
-target_fps = 60
-#  delay to  FPS
-delay = int(1000 / target_fps)
-cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  # wider area coverage
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        self.screen_width, self.screen_height = pyautogui.size()
+        self.prev_index_x, self.prev_index_y = None, None
 
-# main loop
-while True:
-    # frame from webcam
-    ret, frame = cap.read()
-    if not ret:
-        break
+    def detect(self, frame):
+        
+        frame = cv2.flip(frame, 1)
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.hands.process(image)
+        if results.multi_hand_landmarks:
+            hand_landmarks = results.multi_hand_landmarks[0]
+            index_pos = hand_landmarks.landmark[self.mp_hands.HandLandmark.INDEX_FINGER_TIP]
+            thumb_pos = hand_landmarks.landmark[self.mp_hands.HandLandmark.THUMB_TIP]
 
-    # Flipping image
-    frame = cv2.flip(frame, 1)
+            index_x, index_y = int(index_pos.x * self.screen_width), int(index_pos.y * self.screen_height)
+            thumb_x, thumb_y = int(thumb_pos.x * self.screen_width), int(thumb_pos.y * self.screen_height)
 
-    image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    results = hands.process(image)
-    if results.multi_hand_landmarks:
+            distance = math.sqrt((index_x - thumb_x)**2 + (index_y - thumb_y)**2)
 
-        hand_landmarks = results.multi_hand_landmarks[0]
-
-        mp_drawing.draw_landmarks(
-            frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
-        index_pos = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP]
-        thumb_pos = hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP]
-
-        index_x, index_y = int(index_pos.x * screen_width), int(index_pos.y * screen_height)
-        thumb_x, thumb_y = int(thumb_pos.x * screen_width), int(thumb_pos.y * screen_height)
-
-        # Calculate Euclidean distance between index finger and thumb tip landmarks
-        distance = math.sqrt((index_x - thumb_x)**2 + (index_y - thumb_y)**2)
-
-        # Check if distance is below a threshold
-        if distance < 70:
-            pyautogui.click()
-            pyautogui.sleep(0.1)
-        else:
-            if prev_index_x is None:
-                prev_index_x, prev_index_y = index_x, index_y
+            if distance < 70:
+                pyautogui.click()
+                pyautogui.sleep(0.1)
             else:
-                factor = 0.5
-                new_x = (1 - factor) * prev_index_x + factor * index_x
-                new_y = (1 - factor) * prev_index_y + factor * index_y
-                pyautogui.moveTo(new_x, new_y)
-                prev_index_x, prev_index_y = new_x, new_y
+                if self.prev_index_x is None:
+                    self.prev_index_x, self.prev_index_y = index_x, index_y
+                else:
+                    factor = 0.5
+                    new_x = (1 - factor) * self.prev_index_x + factor * index_x
+                    new_y = (1 - factor) * self.prev_index_y + factor * index_y
+                    pyautogui.moveTo(new_x, new_y)
+                    self.prev_index_x, self.prev_index_y = new_x, new_y
 
-    # Display frame
-    cv2.imshow('Gesture Sense Interface Control System', frame)
+        return frame
 
-    # Exit on 'q' key press
-    if cv2.waitKey(delay) & 0xFF == ord('q'):
-        break
+class GestureInterfaceController:
 
-# Clean up
-cap.release()
-cv2.destroyAllWindows()
-hands.close()
+    def __init__(self, 
+                 webcam_id=0, 
+                 frame_width=640, 
+                 frame_height=480, 
+                 target_fps=30):
+        
+        self.webcam_id = webcam_id
+        self.frame_width = frame_width
+        self.frame_height = frame_height
+        self.target_fps = target_fps
+        self.delay = int(1000 / target_fps)
+        self.frame_counter = 0
+        self.frame_skip = 3  # Process every 3rd frame
+        self.cap = None
+        self.detector = None
+
+    def initialize(self):
+        self.cap = cv2.VideoCapture(self.webcam_id)
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.frame_width)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.frame_height)
+        self.detector = HandDetector()
+
+    def run(self):
+        self.initialize()
+        while True:
+            ret, frame = self.cap.read()
+            if not ret:
+                break
+
+            self.frame_counter += 1
+            if self.frame_counter % self.frame_skip != 0:
+                continue
+
+            frame = self.detector.detect(frame)
+
+            cv2.imshow('Gesture Sense Interface Control System', frame)
+            if cv2.waitKey(self.delay) & 0xFF == ord('q'):
+                break
+
+        self.cleanup()
+
+    def cleanup(self):
+        if self.cap is not None:
+            self.cap.release()
+        cv2.destroyAllWindows()
+
+if __name__ == '__main__':
+    
+    controller = GestureInterfaceController()
+    controller.run()
