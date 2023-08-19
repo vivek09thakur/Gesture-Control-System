@@ -89,30 +89,7 @@ class GestureInterfaceController:
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.frame_height)
         self.detector = HandDetector()
 
-    def run(self):
-        self.initialize()
-        while True:
-            ret, frame = self.cap.read()
-            if not ret:
-                break
-
-            self.frame_counter += 1
-            if self.frame_counter % self.frame_skip != 0:
-                continue
-
-            frame = self.detector.detect(frame)
-
-            cv2.imshow('Gesture Sense Interface Control System', frame)
-            if cv2.waitKey(self.delay) & 0xFF == ord('q'):
-                break
-
-        self.cleanup()
-
     def cleanup(self):
         if self.cap is not None:
             self.cap.release()
         cv2.destroyAllWindows()
-
-# if __name__ == '__main__':
-#     controller = GestureInterfaceController()
-#     controller.run()
