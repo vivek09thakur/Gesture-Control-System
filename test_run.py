@@ -1,4 +1,4 @@
-from GSI import GestureInterfaceController
+from GSI.GSI import GestureInterfaceController
 import cv2
 
 controller = GestureInterfaceController()
