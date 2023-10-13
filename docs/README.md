@@ -2,7 +2,7 @@
 # Gesture Sense Interface - Control System
 As a basic computer setup have essential components such as monitor, CPU , keyboard and mouse. But what if we can control our system without using mouse and keyboard? Seems interesting right?
 
-<img width='400px' height='200px' src='https://user-images.githubusercontent.com/37477845/102235423-aa6cb680-3f35-11eb-8ebd-5d823e211447.jpg' align='right' padding='25px'/>
+<img width='400px' height='250px' src='https://user-images.githubusercontent.com/37477845/102235423-aa6cb680-3f35-11eb-8ebd-5d823e211447.jpg' align='right' padding='25px'/>
 
 In morden days many PCs and Laptops comes with Touch Screen displays which is quite good.But For now let's go a step further , What about if we can control our display without touching it? Seems awesome right?
 
