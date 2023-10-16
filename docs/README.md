@@ -1,5 +1,5 @@
 # SCIENCE WEEK PROJECT 🛸🔭
-# Gesture Sense Interface - Control System
+# Gesture Control System
 As a basic computer setup have essential components such as monitor, CPU , keyboard and mouse. But what if we can control our system without using mouse and keyboard? Seems interesting right?
 
 <img width='400px' height='250px' src='https://user-images.githubusercontent.com/37477845/102235423-aa6cb680-3f35-11eb-8ebd-5d823e211447.jpg' align='right' padding='25px'/>
