@@ -52,20 +52,35 @@ class HandDetector:
             else:
                 fingers.append(0)
         return fingers
-
     def detect(self, frame):
         frame = cv2.flip(frame, 1)
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = self.hands.process(image)
         
+        # Initialize tracking variables
+        self.prev_middle_y = getattr(self, 'prev_middle_y', None)
+        fingers = []
+            
         if results.multi_hand_landmarks:
             hand_landmarks = results.multi_hand_landmarks[0]
             fingers = self.get_fingers_up(hand_landmarks)
-            
+                
             # Get key landmarks
             index_pos = hand_landmarks.landmark[self.mp_hands.HandLandmark.INDEX_FINGER_TIP]
             thumb_pos = hand_landmarks.landmark[self.mp_hands.HandLandmark.THUMB_TIP]
             middle_pos = hand_landmarks.landmark[self.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
+                
+                # Process scroll gesture
+            if fingers[2] == 1 and fingers[3] == 1 and fingers[4] == 1 and sum(fingers) == 3:
+                scroll_amount = (middle_pos.y - self.prev_middle_y) * 100 if self.prev_middle_y else 0
+                pyautogui.scroll(int(-scroll_amount))
+                self.prev_middle_y = middle_pos.y
+                
+                # Process Alt+Tab gesture
+            if fingers[0] == 1 and fingers[4] == 1 and sum(fingers) == 2 and self.gesture_cooldown == 0:
+                pyautogui.hotkey('alt', 'tab')
+                self.gesture_cooldown = self.gesture_threshold * 2
+                    
             ring_pos = hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_TIP]
             
             index_x, index_y = int(index_pos.x * self.screen_width), int(index_pos.y * self.screen_height)
@@ -87,12 +102,13 @@ class HandDetector:
             if thumb_index_distance < 70 and self.gesture_cooldown == 0:
                 pyautogui.click()
                 self.gesture_cooldown = self.gesture_threshold
-            
-            # Volume Up - Index, Middle, Ring fingers up
-            if fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1 and sum(fingers) == 3:
-                self.current_volume = min(1.0, self.current_volume + 0.02)
+            # Add error handling and recovery
+            try:
                 self.volume_controller.SetMasterVolumeLevelScalar(self.current_volume, None)
-                
+            except Exception as e:
+                print(f"Volume control error: {e}")
+                # Implement fallback or recovery mechanism
+            
             # Volume Down - Index and Ring fingers up
             if fingers[1] == 1 and fingers[3] == 1 and sum(fingers) == 2:
                 self.current_volume = max(0.0, self.current_volume - 0.02)
@@ -103,11 +119,18 @@ class HandDetector:
                 x_pos = index_pos.x
                 brightness = int(np.interp(x_pos, [0.2, 0.8], [0, 100]))
                 set_brightness(brightness)
-            
             # Windows search (peace sign gesture)
-            if fingers[1] == 1 and fingers[2] == 1 and sum(fingers) == 2 and self.gesture_cooldown == 0:
-                pyautogui.hotkey('win', 's')
-                self.gesture_cooldown = self.gesture_threshold * 2
+            if fingers[1] == 1 and fingers[2] == 1 and sum(fingers) == 2:
+                if self.gesture_cooldown == 0:
+                    if not getattr(self, 'search_open', False):
+                        pyautogui.hotkey('win', 's')
+                        self.search_open = True
+                    else:
+                        pyautogui.press('esc')
+                        self.search_open = False
+                    self.gesture_cooldown = self.gesture_threshold * 2
+            else:
+                self.search_open = False
             
             self.draw_lines(frame, hand_landmarks)
             
@@ -116,7 +139,7 @@ class HandDetector:
                 self.gesture_cooldown -= 1
         
         return frame
-
+        
     def draw_lines(self, frame, hand_landmarks):
         image_height, image_width, _ = frame.shape
         color = (41, 98, 255)
@@ -138,8 +161,7 @@ class HandDetector:
         cv2.putText(frame, "Volume Up: Index + Middle + Ring", (10, 30), font, 0.7, (255, 255, 255), 2)
         cv2.putText(frame, "Volume Down: Index + Ring", (10, 60), font, 0.7, (255, 255, 255), 2)
         cv2.putText(frame, "Brightness: All fingers", (10, 90), font, 0.7, (255, 255, 255), 2)
-        cv2.putText(frame, "Search: Peace sign", (10, 120), font, 0.7, (255, 255, 255), 2)
-
+        cv2.putText(frame, "Search Toggle: Peace sign", (10, 120), font, 0.7, (255, 255, 255), 2)
 class GestureInterfaceController:
     def __init__(self, webcam_id=0, frame_width=640, frame_height=480, target_fps=30):
         self.webcam_id = webcam_id
